@@ -25,23 +25,29 @@ var trainsRef = database.ref("/trains");
     var dest = $("#destination").val().trim();
     var firstTrain = $("#firstTrain").val().trim();
     var freq = $("#freq").val().trim();
-    console.log(name, dest, firstTrain, freq);
 
-    // push information into firebase
+    if (name && dest && firstTrain && freq) {
+        console.log(name, dest, firstTrain, freq);
 
-    //var trainsRef = database.ref("/trains");
+        // push information into firebase
 
-    trainsRef.push({
-        name: name,
-        dest: dest,
-        freq: freq,
-        firstTrain: firstTrain
-    });
+        //var trainsRef = database.ref("/trains");
 
-    $("#trainName").val("");
-    $("#destination").val("");
-    $("#firstTrain").val("");
-    $("#freq").val("");
+        trainsRef.push({
+            name: name,
+            dest: dest,
+            freq: freq,
+            firstTrain: firstTrain
+        });
+
+        $("#trainName").val("");
+        $("#destination").val("");
+        $("#firstTrain").val("");
+        $("#freq").val("");
+
+    } else {
+        console.log("No data entered");
+    }
 
 });
 
